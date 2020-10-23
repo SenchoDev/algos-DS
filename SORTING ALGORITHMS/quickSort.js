@@ -1,4 +1,4 @@
-//. Quick sort
+//. Quick sort (not good for almost sorted arrays)
 
 function pivot(arr, start = 0, end = arr.length - 1) {
   const swap = (arr, idx1, idx2) => {
