@@ -58,6 +58,49 @@ class SinglyLinkedList{
     }
     return currentHead;
   }
+  unshift(val){
+    var newNode = new Node(val);
+    if(!this.head){
+      this.head= newNode;
+      this.tail= this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+  get(index){
+    if(index < 0 || index >= this.length) return null;
+    var counter = 0;
+    var current = this.head;
+    while(counter !== index) {
+      current = current.next;
+      counter++;
+
+    }
+    return current;
+  }
+  set(index, val){
+    var foundNode = this.get(index);
+    if(foundNode){
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
+  insert(index, val){
+    if(index < 0 || index > this.length) return false;
+    if(index === this.length) return !!this.push(val);
+    if(index === 0) return !!this.unshift(val);
+    var newNode = new Node(val);
+    var prev = this.get(index - 1);
+    var temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+  }
   // traverse(){
   //   var current = this.head;
   //   while(current){
@@ -67,4 +110,9 @@ class SinglyLinkedList{
   // }
 }
 var list = new SinglyLinkedList();
-list.push("HELLO")
+list.push(1);
+list.push(12);
+list.push(133);
+list.push(1444);
+list.push(15555);
+
