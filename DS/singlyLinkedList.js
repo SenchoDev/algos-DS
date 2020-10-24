@@ -108,11 +108,48 @@ class SinglyLinkedList{
   //     current = current.next;
   //   }
   // }
+  remove(index){
+    if(index < 0 || index >= this.length) return undefined;
+    if(index === 0) return this.shift();
+    if(index === this.length - 1) return this.pop();
+    var previousNode = this.get(index - 1);
+    var removed = previousNode.next;
+    previousNode.next = removed.next;
+    this.length--;
+    return removed
+  }
+  reverse(){
+    var node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    
+    var next;
+    var prev = null;
+
+    for(var i = 0; i < this.length; i++){
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
+  }
 }
 var list = new SinglyLinkedList();
-list.push(1);
-list.push(12);
-list.push(133);
-list.push(1444);
-list.push(15555);
+
+// SINGLY LINKED LIST ARE AN EXCELLENT ALTERNATIVE TO ARRAYS WHEN INSERTION AND DELETION AT THE 
+// BEGGINING ARE FREQUENTLY REQUIRED
+
+// ARRAYS COINTAIN A BUILT IN INDEX WHEREAS LINKED LISTS DO NOT
+
+// THE IDEA OF A LIST DATA STRUCTURE THAT COINSISTS OF NODES IS THE FOUNDATION FOR OTHER DATA STRUCTURES
+// LIKE STACKS AND QUEUES
+
+
+
+// list.push(1);
+// list.push(12);
+// list.push(133);
+// list.push(1444);
+// list.push(15555);
 
