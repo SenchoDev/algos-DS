@@ -36,6 +36,7 @@ var isValid = function (s) {
   var stack = [];
   // loop over array, and add desired values into stack
   for (var c of cArr) {
+    console.log(stack.pop());
     // if we encounter openening bracket , we push closing bracket into stack
     if (c === "[") stack.push("]");
     else if (c === "{") stack.push("}");
@@ -51,30 +52,30 @@ var isValid = function (s) {
 };
 
 // var isValid = function(s) {
+  
+  //     let closeMap = {
+    //         ')' : '(',
+    //         '}' : '{',
+    //         ']' : '['
+    //     };
+    //     let charStack = [];
     
-//     let closeMap = {
-//         ')' : '(',
-//         '}' : '{',
-//         ']' : '['
-//     };
-//     let charStack = [];
+    //     //validate input
+    //     if(s===null || s===undefined)
+    //         return false;
     
-//     //validate input
-//     if(s===null || s===undefined)
-//         return false;
-    
-//     for(var i = 0; i<s.length; i++){
-//         let curChar = s.charAt(i);
-//         let topElement;
-//         if(closeMap[curChar] !== undefined){
-//             topElement = (charStack.length===0) ? '#' : charStack.pop();
-//             if(topElement !== closeMap[curChar])
-//                 return false;
-//         }else{
-//             charStack.push(curChar);
-//         }
-//     }
-//     return charStack.length === 0;
+    //     for(var i = 0; i<s.length; i++){
+      //         let curChar = s.charAt(i);
+      //         let topElement;
+      //         if(closeMap[curChar] !== undefined){
+        //             topElement = (charStack.length===0) ? '#' : charStack.pop();
+        //             if(topElement !== closeMap[curChar])
+        //                return false; 
+        //         }else{
+          //             charStack.push(curChar);
+          //         }
+          //     }
+          //     return charStack.length === 0;
 // }; 
 
 const result = isValid("{[[{}]]}()()");
