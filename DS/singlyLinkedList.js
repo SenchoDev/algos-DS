@@ -101,13 +101,7 @@ class SinglyLinkedList{
     this.length++;
     return true;
   }
-  // traverse(){
-  //   var current = this.head;
-  //   while(current){
-  //     console.log(current.val);
-  //     current = current.next;
-  //   }
-  // }
+  
   remove(index){
     if(index < 0 || index >= this.length) return undefined;
     if(index === 0) return this.shift();
@@ -118,6 +112,7 @@ class SinglyLinkedList{
     this.length--;
     return removed
   }
+
   reverse(){
     var node = this.head;
     this.head = this.tail;
@@ -134,6 +129,7 @@ class SinglyLinkedList{
     }
     return this;
   }
+
 }
 var list = new SinglyLinkedList();
 
