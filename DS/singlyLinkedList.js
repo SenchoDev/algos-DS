@@ -51,8 +51,10 @@ class SinglyLinkedList{
   shift(){
     if(!this.head) return undefined;
     var currentHead = this.head;
+    // 1
     this.head = currentHead.next;
-    this.length--;
+    // 12
+    this.length--; 
     if(this.length === 0){
       this.tail = null;
     }
@@ -143,9 +145,8 @@ var list = new SinglyLinkedList();
 
 
 
-// list.push(1);
-// list.push(12);
-// list.push(133);
-// list.push(1444);
-// list.push(15555);
+list.push(1);
+list.push(12);
+list.push(123);
+
 
