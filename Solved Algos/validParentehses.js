@@ -36,7 +36,6 @@ var isValid = function (s) {
   var stack = [];
   // loop over array, and add desired values into stack
   for (var c of cArr) {
-    console.log(stack.pop());
     // if we encounter openening bracket , we push closing bracket into stack
     if (c === "[") stack.push("]");
     else if (c === "{") stack.push("}");
