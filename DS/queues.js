@@ -5,37 +5,38 @@ class Node{
   }
 }
 
-class Stack{
+class Queue{
   constructor(){
     this.first = null;
     this.last = null;
     this.size = 0;
   }
-
-  push(val){
+  
+  //ADDS TO END
+  enqueue(val){
     var newNode = new Node(val);
     if(!this.first){
       this.first = newNode;
       this.last = newNode;
     } else {
-      var temp = this.first;
-      this.first = newNode;
-      this.first.next = temp;
+      this.last.next = newNode;
+      this.last = newNode;
     }
-    return ++this.size
+    return ++this.size;
   }
-  pop(){
+  
+  // REMOVES FROM BEGGING
+  dequeue(){
     if(!this.first) return null;
-    var temp = this.first;
 
-    if(this.first === this.last){
+    var temp = this.first;
+    if(this.first === this.last){ 
       this.last = null;
     }
     this.first = this.first.next;
     this.size--;
-    return temp.value;
-
+    return temp.value
   }
 }
 
-const stack = new Stack();
+const q = new Queue();
