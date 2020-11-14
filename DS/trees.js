@@ -50,7 +50,7 @@ class BinarySearchTree {
         found = true;
       }
     }
-    if (!found) return udnefined;
+    if (!found) return undefined;
     return current;
   }
   contains(value) {
@@ -67,6 +67,50 @@ class BinarySearchTree {
       }
     }
     return false;
+  }
+  //breath first search (horizontal way of searching)
+  BFS(){
+    var data = [],  queue = [], node = this.root;
+    queue.push(this.root);
+    while(queue.length){
+      node = queue.shift();
+      data.push(node);
+      if(node.left) queue.push(node.left)
+      if(node.right) queue.push(node.right)
+    }
+  }
+  // depth first search - preorder
+  DFSPreOrder(){
+    var data = [];
+    function traverse(node){
+      data.push(node);
+      if(node.left) traverse(node.left);
+      if(node.right) traverse(node.right);
+    }
+    traverse(this.root)
+    return data;
+  }
+  // depth first serach - postorder
+  DFSPostOrder(){
+    var data = [];
+    function traverse(node){
+      if(node.left) traverse(node.left);
+      if(node.right) traverse(node.right);
+      data.push(node);
+    }
+    traverse(this.node);
+    return data;
+  }
+  // depth first search - inorder 
+  DFSInOrder(){
+    var data = [];
+    function traverse(node){
+      if(node.left) traverse(node.left);
+      data.push(node);
+      if(node.right) traverse(node.right);
+    }
+    traverse(this.node);
+    return data;
   }
 }
 // finding and inserting O(log n) Not guaranteed
