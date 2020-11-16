@@ -36,9 +36,7 @@ const climbStairs = function (n) {
 
     return savedResults[stairsRemaining];
   };
-  return countingFunc(n, {
-    1: 1,
-  });
+  return countingFunc(n, {});
 };
 
 console.log(climbStairs(3));
