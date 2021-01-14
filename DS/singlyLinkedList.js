@@ -146,7 +146,6 @@ var list = new SinglyLinkedList();
 
 
 list.push(1);
-list.push(12);
-list.push(123);
+
 
 
