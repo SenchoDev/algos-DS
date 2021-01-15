@@ -135,4 +135,5 @@ class DoublyLinkedLists{
 const list = new DoublyLinkedLists();
 list.push(12)
 list.push(13)
+list.push(14)
 

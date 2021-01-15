@@ -28,4 +28,4 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
   return arr;
 }
 
-quickSort([ 2,1,4,6,9,5 ])
+quickSort([ 1,2,4,6,9,5 ])
