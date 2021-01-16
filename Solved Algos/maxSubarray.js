@@ -12,3 +12,5 @@ const maxSubArray = function(nums) {
   return maxGlobal;
   
 };
+
+console.log(maxSubArray([1, 2, -1, 2, -4]))

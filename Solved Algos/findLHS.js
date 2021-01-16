@@ -39,6 +39,7 @@ const findLHS = function(nums){
   for(let i = 0; i < nums.length; i++){
     let count = 0;
     let flag = false;
+    console.log(i);
     for(let j = 0; i < nums.length; i++){
       if(nums[j] === nums[i]) {
         count++;

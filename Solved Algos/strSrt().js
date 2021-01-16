@@ -31,6 +31,5 @@ const strStr = function(haystack, needle){
   return -1;
 
 }
-console.log(strStr("mississipi",
-"issisp"));
+console.log(strStr("mississipi", "issipi"));
 
