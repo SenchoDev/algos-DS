@@ -19,6 +19,13 @@ class Graph {
       (v) => v !== v1
     );
   }
+
+  removeVertex(vertex){
+    while(this.adjacencyList[vertex].length){
+      const adjacentVertex = this.adjacencyList[vertex].pop();
+      this.adjacencyList(vertex, adjacentVertex);
+    }
+  }
 }
 
 let g = new Graph();
