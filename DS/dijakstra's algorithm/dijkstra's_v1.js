@@ -14,85 +14,86 @@ class PriorityQueue {
   };
 }
 
-
-class weightedGraph{
-  constructor() {
-    this.adjacencyList = {};
-  }
-  addVertex(vertex) {
-    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-  }
-
-  addEdge(v1, v2, weight) {
-    this.adjacencyList[v1].push({node: v2, weight});
-    this.adjacencyList[v2].push({node: v1, weight});
-  }
-
-  Dijkstra(start, finish){
-
-    const nodes = new  PriorityQueue();
-    const distances = {};
-    const previous = {};
-    let smallest;
-
-    // build up initial state
-    for(let vertex in this.adjacencyList){
-      if(vertex === start){
-        distances[vertex] = 0;
-        nodes.enqueue(vertex, 0); 
-      } else {
-        distances[vertex] = Infinity;
-        nodes.enqueue(vertex, Infinity); 
-      }
-      previous[vertex] = null;
+class WeightedGraph {
+    constructor() {
+        this.adjacencyList = {};
     }
-    // as long as there is something to visit
-    while(nodes.values.length){
-      smallest = nodes.dequeue().val;
-
-      if(smallest === finish){
-        // we are Done
-
-        // build up path 
-      }
-
-      if(smallest || distances[smallest] !== Infinity){
-        for(let neighbor in this.adjacencyList[smallest]){
-          // find neighboring node
-          let nextNode = this.adjacencyList[smallest][neighbor];
-          console.log(nextNode)
-          // calculate new distance to neighboring node
-          let candidate = distances[smallest] + nextNode.weight;
-          
+    addVertex(vertex){
+        if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    }
+    addEdge(vertex1,vertex2, weight){
+        this.adjacencyList[vertex1].push({node:vertex2,weight});
+        this.adjacencyList[vertex2].push({node:vertex1, weight});
+    }
+    Dijkstra(start, finish){
+        const nodes = new PriorityQueue();
+        const distances = {};
+        const previous = {};
+        let pathh = [] //to return at end
+        let smallest;
+        //build up initial state
+        for(let vertex in this.adjacencyList){
+            if(vertex === start){
+                distances[vertex] = 0;
+                nodes.enqueue(vertex, 0);
+            } else {
+                distances[vertex] = Infinity;
+                nodes.enqueue(vertex, Infinity);
+            }
+            previous[vertex] = null;
         }
-      }
+        // as long as there is something to visit
+        while(nodes.values.length){
+            smallest = nodes.dequeue().val;
+            if(smallest === finish){
+                //WE ARE DONE
+                //BUILD UP pathh TO RETURN AT END
+                while(previous[smallest]){
+                    pathh.push(smallest);
+                    smallest = previous[smallest];
+                }
+                break;
+            } 
+            if(smallest || distances[smallest] !== Infinity){
+                for(let neighbor in this.adjacencyList[smallest]){
+                    //find neighboring node
+                    let nextNode = this.adjacencyList[smallest][neighbor];
+                    //calculate new distance to neighboring node
+                    let candidate = distances[smallest] + nextNode.weight;
+                    let nextNeighbor = nextNode.node;
+                    if(candidate < distances[nextNeighbor]){
+                        //updating new smallest distance to neighbor
+                        distances[nextNeighbor] = candidate;
+                        //updating previous - How we got to neighbor
+                        previous[nextNeighbor] = smallest;
+                        //enqueue in priority queue with new priority
+                        nodes.enqueue(nextNeighbor, candidate);
+                    }
+                }
+            }
+        }
+        return pathh.concat(smallest).reverse();     
     }
-  }
 }
 
+var graph = new WeightedGraph()
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+graph.addVertex("D");
+graph.addVertex("E");
+graph.addVertex("F");
 
-const g = new weightedGraph();
-
-g.addVertex("A");
-g.addVertex("B");
-g.addVertex("C");
-g.addVertex("D");
-g.addVertex("E");
-g.addVertex("F");
-
-g.addEdge("A", "B", 4);
-g.addEdge("A", "C", 2);
-g.addEdge("B", "E", 3);
-g.addEdge("C", "D", 2);
-g.addEdge("D", "F", 4);
-g.addEdge("D", "E", 3);
-g.addEdge("D", "F", 1);
-g.addEdge("E", "F", 1);
-
-g.Dijkstra("A", "B")
+graph.addEdge("A","B", 4);
+graph.addEdge("A","C", 2);
+graph.addEdge("B","E", 3);
+graph.addEdge("C","D", 2);
+graph.addEdge("C","F", 4);
+graph.addEdge("D","E", 3);
+graph.addEdge("D","F", 1);
+graph.addEdge("E","F", 1);
 
 
+graph.Dijkstra("A", "E");
 
-
-
-
+// ["A", "C", "D", "F", "E"]
