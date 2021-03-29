@@ -5,7 +5,7 @@
 //1.Restate the problem in my own word
 //"check characters in string"
 // we have two strings where we need to see exsistance of  characters(str1) in other str2;
-// order doesn't matter but if there is more than 1 character in str1, other str2 needs to have more than 1 character 
+// order doesn't matter but if there is  1 character in str1, other str2 needs to have 1 character 
 //2. Inputs are always goingto be alphabetic strings, without spaces, numbers and so on.
 //3. outputs either true or false;
 
